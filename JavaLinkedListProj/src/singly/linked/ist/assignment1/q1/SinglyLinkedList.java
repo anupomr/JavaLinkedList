@@ -97,6 +97,68 @@ public class SinglyLinkedList<E> {
 		}
 	}
 
+	// get node
+	public Node<E> getNode(E e) {
+		Node<E> current = head;
+		while (current.getElement() != e && current != null) {
+			current = current.getNext();
+		}
+		if (current == null) {
+			System.out.println("Node with element " + e + " can NOT be found");
+		}
+		return current;
+	}
+
+	// swap nodes
+	public void swapNodes(Node<E> left, Node<E> right) {
+		// compare two nodes, both element and next
+		if (left.getElement() == right.getElement() && left.getNext() == right.getNext()) {
+			// same node, no need to swap
+			System.out.println("No need to swap, two nodes are actully the same");
+			return;
+		} else // different node
+		{
+			Node<E> leftnext = left.getNext();
+			Node<E> rightnext = right.getNext();
+
+			// find leftprev
+			Node<E> current = head;
+			Node<E> leftprev = null;
+			while (current != null) {
+				if (current.getNext() == left) {
+					leftprev = current;
+					break;
+				}
+				current = current.getNext();
+			}
+
+			// find rightprev
+			current = head;
+			Node<E> rightprev = null;
+			while (current != null) {
+				if (current.getNext() == right) {
+					rightprev = current;
+					break;
+				}
+				current = current.getNext();
+			}
+
+			// check whether find prev
+			if (leftprev == null || rightprev == null) {
+				throw new IllegalArgumentException("Node prev can NOT be found!");
+			} else {
+				// swap
+				leftprev.setNext(right);
+				right.setNext(leftnext);
+				rightprev.setNext(left);
+				;
+				left.setNext(rightnext);
+				System.out.println("Successfully swap two nodes!");
+			}
+		}
+
+	}
+
 	public static void main(String[] args) {
 
 	}
