@@ -109,7 +109,20 @@ public class DoublyLinkedList<E> {
 			current = current.getNext();
 		}
 	}
-	
+	//concatenate two doubly linked list
+		public static <E> DoublyLinkedList<E> concatDoublyLinkdList(DoublyLinkedList<E> firstList, DoublyLinkedList<E> secondList)
+		{
+			if (firstList.isEmpty() || secondList.isEmpty())
+			{
+				System.out.println("No need to concat because the list is empty");
+				return (firstList == null) ? secondList : firstList;
+			}
+
+			//concatenate
+			firstList.trailer.getPrev().setNext(secondList.header.getNext());
+			return firstList;
+
+		}
 	
 	public static void main(String[] args) {
 		DoublyLinkedList<String> dLLCars = new DoublyLinkedList<>();
@@ -119,6 +132,13 @@ public class DoublyLinkedList<E> {
 		dLLCars.addLast("Honda 2009");
 		dLLCars.addLast("Honda 2011");
 		dLLCars.printAll();
+		
+		
+		DoublyLinkedList<String> dLL2 = new DoublyLinkedList<>();
+		dLL2.addLast("Honda 2020 be concatenated");
+
+		DoublyLinkedList<String> dLL3 = DoublyLinkedList.concatDoublyLinkdList(dLLCars, dLL2);
+		dLL3.printAll();
 	}
 
 }
