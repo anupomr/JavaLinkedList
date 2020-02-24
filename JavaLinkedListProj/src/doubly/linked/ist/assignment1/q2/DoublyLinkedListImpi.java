@@ -91,7 +91,12 @@ public class DoublyLinkedListImpi<E> {
 	
 
 	public static void main(String[] args) {
-
+		DoublyLinkedListImpi<Integer> dll = new DoublyLinkedListImpi<Integer>();
+		dll.addFirst(10);
+		dll.addFirst(34);
+		dll.addLast(56);
+		dll.addLast(364);
+		dll.iterateForward();
 	}
 
 }
