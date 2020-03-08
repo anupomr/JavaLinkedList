@@ -114,7 +114,7 @@ public class SinglyLinkedList<E> {
 		// compare two nodes, both element and next
 		if (left.getElement() == right.getElement() && left.getNext() == right.getNext()) {
 			// same node, no need to swap
-			System.out.println("No need to swap, two nodes are actully the same");
+			System.out.println("No need to swap, two nodes are same");
 			return;
 		} else // different node
 		{
@@ -160,7 +160,24 @@ public class SinglyLinkedList<E> {
 	}
 
 	public static void main(String[] args) {
+		SinglyLinkedList<String> sList = new SinglyLinkedList<>();
+		sList.addFirst("Anupom");
+		sList.addLast("Left");
+		sList.addLast("COMP126");
+		sList.addLast("and");
+		sList.addLast("COMP254");
+		sList.printAll();
 
+		//test swap
+		SinglyLinkedList.Node<String> leftNode = sList.getNode("COMP126");
+		SinglyLinkedList.Node<String> rightNode = sList.getNode("COMP126");
+		System.out.println("Test-1: test swap two same nodes");
+		sList.swapNodes(leftNode, rightNode);
+
+		System.out.println("Test-2: test swap two different nodes");
+		rightNode = sList.getNode("COMP254");
+		sList.swapNodes(leftNode, rightNode);
+		sList.printAll();
 	}
 
 }
